@@ -62,6 +62,12 @@ The dataset used for this project contains various features related to customer 
 ## 📝 Conclusion
 This project provides valuable insights into customer churn prediction, helping e-commerce businesses proactively retain customers. By leveraging machine learning, companies can implement targeted strategies to enhance customer satisfaction and reduce churn rates.
 
+# Streamlit
+https://ecommerce-churn-predict-app.streamlit.app/#6696e678
+
+# Link PPT
+(https://www.canva.com/design/DAGetbqDv3c/PKBMvza03-Sn7i88eCsmlw/view?utm_content=DAGetbqDv3c&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h544ea6eaf9)
+
 ## 📬 Contact
 If you have any questions or feedback, feel free to reach out!
 
