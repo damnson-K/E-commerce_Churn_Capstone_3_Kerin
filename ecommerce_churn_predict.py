@@ -70,7 +70,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add Header Image
-st.image("churn.png", use_column_width=True)
+st.image("churn.png", use_container_width=True)
 
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
