@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+import joblib  # Import joblib for alternative model loading
 import plotly.graph_objects as go
 import os  # Added to check for model file existence
 
@@ -11,12 +12,6 @@ print("Current Working Directory:", os.getcwd())
 
 # List files in the directory to check if the model file is present
 print("Files in Directory:", os.listdir())
-
-# Verify if the model file exists
-model_path = "finalmodel_lgbm.sav"
-if not os.path.exists(model_path):
-    raise FileNotFoundError(f"Model file '{model_path}' not found! Please check the file path.")
-
 
 # Set Page Title and Layout
 st.set_page_config(page_title="E-Commerce Churn Predictor", page_icon="🛍️", layout="wide")
@@ -77,7 +72,6 @@ st.image("churn.png", use_container_width=True)  # Updated to use_container_widt
 
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
-st.header("📊 E-Commerce Customer Churn Prediction")
 st.markdown("Use this tool to predict whether a customer is likely to churn or stay loyal.")
 
 # Sidebar for user input
@@ -141,8 +135,16 @@ with col1:
 model_path = "finalmodel_lgbm.sav"
 
 if os.path.exists(model_path):
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
+    try:
+        with open(model_path, "rb") as f:
+            model = pickle.load(f)
+    except Exception as e:
+        st.warning("⚠️ Pickle failed to load. Trying joblib...")
+        try:
+            model = joblib.load(model_path)  # Attempt to load with joblib
+        except Exception as e:
+            st.error(f"❌ Failed to load model. Error: {e}")
+            st.stop()  # Stop execution if model loading fails
 
     # Predict churn
     prediction = model.predict(customer_data)[0]
@@ -169,18 +171,13 @@ if os.path.exists(model_path):
 
         if prediction == 1:
             st.error("⚠️ This customer is **likely to churn**.")
-            churn_color = "red"
         else:
             st.success("✅ This customer is **not likely to churn**.")
-            churn_color = "green"
         
         st.plotly_chart(fig, use_container_width=True)
 else:
     st.error("🚨 Model file not found! Please check if `finalmodel_lgbm.sav` exists in the directory.")
-
-# Download Button
-csv = customer_data.to_csv(index=False)
-st.download_button(label="📥 Download Data", data=csv, file_name="customer_data.csv", mime="text/csv")
+    st.stop()  # Stop execution if the model file is missing
 
 # Footer with Credit
 st.markdown(
