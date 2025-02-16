@@ -6,6 +6,18 @@ import pickle
 import plotly.graph_objects as go
 import os  # Added to check for model file existence
 
+# Print the current working directory
+print("Current Working Directory:", os.getcwd())
+
+# List files in the directory to check if the model file is present
+print("Files in Directory:", os.listdir())
+
+# Verify if the model file exists
+model_path = "finalmodel_lgbm.sav"
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file '{model_path}' not found! Please check the file path.")
+
+
 # Set Page Title and Layout
 st.set_page_config(page_title="E-Commerce Churn Predictor", page_icon="🛍️", layout="wide")
 
