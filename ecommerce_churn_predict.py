@@ -70,31 +70,13 @@ st.markdown("""
 # Add Header Image
 st.image("churn.png", use_container_width=True)  # Updated to use_container_width
 
-# linkedin
 st.markdown("""
-    <style>
-        .top-left {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 16px;
-            color: #b0b0b0; /* Light gray */
-            padding: 10px 0; /* Adds space above and below */
-        }
-        .top-left a {
-            color: #b0b0b0; /* Light gray for the link */
-            text-decoration: none;
-        }
-        .top-left a:hover {
-            color: #4b6cb7; /* Subtle blue hover effect */
-            text-decoration: underline;
-        }
-    </style>
-    <div class='top-left'>
+    <div style="text-align: left; font-size: 16px; color: #b0b0b0;">
         Created by <b>Kerin</b> | 
-        <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a>
+        <a href='https://www.linkedin.com/in/kerin-m' target='_blank' style="color: #b0b0b0; text-decoration: none;">LinkedIn</a>
     </div>
 """, unsafe_allow_html=True)
+
 
 
 # Title
