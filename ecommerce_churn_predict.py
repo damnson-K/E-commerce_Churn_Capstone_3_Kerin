@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import plotly.graph_objects as go
-
+import os  # Added to check for model file existence
 
 # Set Page Title and Layout
 st.set_page_config(page_title="E-Commerce Churn Predictor", page_icon="🛍️", layout="wide")
@@ -12,7 +12,6 @@ st.set_page_config(page_title="E-Commerce Churn Predictor", page_icon="🛍️",
 # Apply Custom CSS for Styling
 st.markdown("""
     <style>
-        /* Background gradient for the main title */
         .title-text {
             background: linear-gradient(to right, #4b6cb7, #182848);
             -webkit-background-clip: text;
@@ -20,13 +19,9 @@ st.markdown("""
             font-size: 32px;
             font-weight: bold;
         }
-
-        /* Sidebar styling */
         .sidebar .sidebar-content {
             background-color: #1e1e2f !important;
         }
-
-        /* Table styling */
         div[data-testid="stDataFrame"] {
             width: 100% !important;
         }
@@ -45,8 +40,6 @@ st.markdown("""
         tbody tr:nth-child(even) {
             background-color: #3a3a55 !important;
         }
-
-        /* Buttons */
         .stButton>button {
             background-color: #4b6cb7;
             color: white;
@@ -57,8 +50,6 @@ st.markdown("""
         .stButton>button:hover {
             background-color: #182848;
         }
-
-        /* Footer */
         .footer {
             position: fixed;
             bottom: 10px;
@@ -70,7 +61,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add Header Image
-st.image("churn.png", use_container_width=True)
+st.image("churn.png", use_container_width=True)  # Updated to use_container_width
 
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
@@ -134,41 +125,46 @@ with col1:
     st.dataframe(customer_data_renamed.T, width=700, height=400)
     st.caption("This table provides a breakdown of customer attributes used for prediction.")
 
-# Load trained model
-with open("finalmodel_lgbm.sav", "rb") as f:
-    model = pickle.load(f)
+# Check if model file exists before loading
+model_path = "finalmodel_lgbm.sav"
 
-# Predict churn
-prediction = model.predict(customer_data)[0]
-probability = model.predict_proba(customer_data)[0][1]  # Probability of churn
+if os.path.exists(model_path):
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
 
-# Gauge Chart for Churn Probability
-fig = go.Figure(go.Indicator(
-    mode="gauge+number",
-    value=probability * 100,
-    title={"text": "Churn Probability (%)"},
-    gauge={
-        "axis": {"range": [0, 100]},
-        "bar": {"color": "#950606" if probability > 0.5 else "#06402B"},
-        "steps": [
-            {"range": [0, 50], "color": "#ACE1AF"},
-            {"range": [50, 100], "color": "#B22222"},
-        ],
-    }
-))
+    # Predict churn
+    prediction = model.predict(customer_data)[0]
+    probability = model.predict_proba(customer_data)[0][1]  # Probability of churn
 
-# Right Column - Display Prediction
-with col2:
-    st.subheader("🔮 Prediction Result")
+    # Gauge Chart for Churn Probability
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=probability * 100,
+        title={"text": "Churn Probability (%)"},
+        gauge={
+            "axis": {"range": [0, 100]},
+            "bar": {"color": "#950606" if probability > 0.5 else "#06402B"},
+            "steps": [
+                {"range": [0, 50], "color": "#ACE1AF"},
+                {"range": [50, 100], "color": "#B22222"},
+            ],
+        }
+    ))
 
-    if prediction == 1:
-        st.error("⚠️ This customer is **likely to churn**.")
-        churn_color = "red"
-    else:
-        st.success("✅ This customer is **not likely to churn**.")
-        churn_color = "green"
-    
-    st.plotly_chart(fig, use_container_width=True)
+    # Right Column - Display Prediction
+    with col2:
+        st.subheader("🔮 Prediction Result")
+
+        if prediction == 1:
+            st.error("⚠️ This customer is **likely to churn**.")
+            churn_color = "red"
+        else:
+            st.success("✅ This customer is **not likely to churn**.")
+            churn_color = "green"
+        
+        st.plotly_chart(fig, use_container_width=True)
+else:
+    st.error("🚨 Model file not found! Please check if `finalmodel_lgbm.sav` exists in the directory.")
 
 # Download Button
 csv = customer_data.to_csv(index=False)
