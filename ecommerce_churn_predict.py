@@ -70,6 +70,22 @@ st.markdown("""
 # Add Header Image
 st.image("churn.png", use_container_width=True)  # Updated to use_container_width
 
+# LinkedIn at the Top Left
+st.markdown("""
+    <style>
+        .top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+        }
+    </style>
+    <div class='top-left'>
+        Created by <b>Kerin</b> | 
+        <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a>
+    </div>
+""", unsafe_allow_html=True)
+
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
 st.markdown("Use this tool to predict whether a customer is likely to churn or stay loyal.")
@@ -179,8 +195,3 @@ else:
     st.error("🚨 Model file not found! Please check if `finalmodel_lgbm.sav` exists in the directory.")
     st.stop()  # Stop execution if the model file is missing
 
-# Footer with Credit
-st.markdown(
-    "<div class='footer'>Created by <b>Kerin</b> | <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a></div>", 
-    unsafe_allow_html=True
-)
