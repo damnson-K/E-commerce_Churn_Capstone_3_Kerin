@@ -70,6 +70,9 @@ st.markdown("""
 # Add Header Image
 st.image("churn.png", use_container_width=True)  # Updated to use_container_width
 
+# Title
+st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
+
 # LinkedIn at the Top Left
 st.markdown("""
     <style>
@@ -86,8 +89,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# Title
-st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
 st.markdown("Use this tool to predict whether a customer is likely to churn or stay loyal.")
 
 # Sidebar for user input
