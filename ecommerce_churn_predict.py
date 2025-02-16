@@ -70,14 +70,16 @@ st.markdown("""
 # Add Header Image
 st.image("churn.png", use_container_width=True)  # Updated to use_container_width
 
+#linkedin
 st.markdown("""
     <div style="text-align: left; font-size: 16px; color: #b0b0b0;">
         Created by <b>Kerin</b> | 
-        <a href='https://www.linkedin.com/in/kerin-m' target='_blank' style="color: #b0b0b0; text-decoration: none;">LinkedIn</a>
+        <a href='https://www.linkedin.com/in/kerin-m' target='_blank' 
+           style="color: #b0b0b0; text-decoration: none; border-bottom: 1px solid #b0b0b0;">
+           LinkedIn
+        </a>
     </div>
 """, unsafe_allow_html=True)
-
-
 
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
