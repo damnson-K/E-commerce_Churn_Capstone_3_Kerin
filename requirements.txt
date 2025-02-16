@@ -2,3 +2,4 @@ streamlit
 plotly
 pytz
 joblib
+imbalanced-learn
