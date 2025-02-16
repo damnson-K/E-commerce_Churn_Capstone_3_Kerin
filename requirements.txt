@@ -3,3 +3,4 @@ plotly
 pytz
 joblib
 imbalanced-learn
+lightgbm
