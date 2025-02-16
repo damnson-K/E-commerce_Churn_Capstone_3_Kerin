@@ -73,32 +73,6 @@ st.image("churn.png", use_container_width=True)  # Updated to use_container_widt
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
 
-#linkedin
-st.markdown("""
-    <style>
-        .top-left {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 16px;
-            color: #b0b0b0; /* Light gray */
-            padding: 10px 0; /* Adds space above and below */
-        }
-        .top-left a {
-            color: #b0b0b0; /* Light gray for the link */
-            text-decoration: none;
-        }
-        .top-left a:hover {
-            color: #4b6cb7; /* Subtle blue hover effect */
-            text-decoration: underline;
-        }
-    </style>
-    <div class='top-left'>
-        Created by <b>Kerin</b> | 
-        <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a>
-    </div>
-""", unsafe_allow_html=True)
-
 # Sidebar for user input
 st.sidebar.header("🔍 Enter Customer Details")
 
@@ -203,4 +177,29 @@ if os.path.exists(model_path):
 else:
     st.error("🚨 Model file not found! Please check if `finalmodel_lgbm.sav` exists in the directory.")
     st.stop()  # Stop execution if the model file is missing
+
+# Footer with Credit
+st.markdown("""
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;  /* Move to the left */
+            font-size: 14px;
+            color: #666;
+        }
+        .footer a {
+            color: #666;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #4b6cb7; /* Hover effect */
+            text-decoration: underline;
+        }
+    </style>
+    <div class='footer'>
+        Created by <b>Kerin</b> | 
+        <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a>
+    </div>
+""", unsafe_allow_html=True)
 
