@@ -75,7 +75,7 @@ st.markdown("""
     <div style="text-align: left; font-size: 16px; color: #b0b0b0;">
         Created by <b>Kerin</b> | 
         <a href='https://www.linkedin.com/in/kerin-m' target='_blank' 
-           style="color: #b0b0b0; text-decoration: none; border-bottom: 1px solid #b0b0b0;">
+           style="color: #4b6cb7; text-decoration: none; border-bottom: 1px solid #4b6cb7; font-weight: bold;">
            LinkedIn
         </a>
     </div>
