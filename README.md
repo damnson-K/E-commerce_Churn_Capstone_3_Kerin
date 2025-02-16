@@ -56,7 +56,7 @@ The dataset used for this project contains various features related to customer 
 
 ## 📌 Future Improvements
 - Fine-tuning hyperparameters to improve model accuracy.
-- Experimenting with advanced models such as XGBoost or Neural Networks.
+- Experimenting with other advanced models.
 - Deploying the model as an API for real-time churn prediction.
 
 ## 📝 Conclusion
