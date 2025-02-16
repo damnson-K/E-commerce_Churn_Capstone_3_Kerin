@@ -73,7 +73,7 @@ st.image("churn.png", use_container_width=True)  # Updated to use_container_widt
 # Title
 st.markdown("<h1 class='title-text'>📊 E-Commerce Customer Churn Prediction</h1>", unsafe_allow_html=True)
 
-# LinkedIn at the Top Left
+#linkedin
 st.markdown("""
     <style>
         .top-left {
@@ -81,6 +81,16 @@ st.markdown("""
             top: 20px;
             left: 20px;
             font-size: 16px;
+            color: #b0b0b0; /* Light gray */
+            padding: 10px 0; /* Adds space above and below */
+        }
+        .top-left a {
+            color: #b0b0b0; /* Light gray for the link */
+            text-decoration: none;
+        }
+        .top-left a:hover {
+            color: #4b6cb7; /* Subtle blue hover effect */
+            text-decoration: underline;
         }
     </style>
     <div class='top-left'>
@@ -88,8 +98,6 @@ st.markdown("""
         <a href='https://www.linkedin.com/in/kerin-m' target='_blank'>LinkedIn</a>
     </div>
 """, unsafe_allow_html=True)
-
-st.markdown("Use this tool to predict whether a customer is likely to churn or stay loyal.")
 
 # Sidebar for user input
 st.sidebar.header("🔍 Enter Customer Details")
