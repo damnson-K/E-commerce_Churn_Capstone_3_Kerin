@@ -66,5 +66,6 @@ This project provides valuable insights into customer churn prediction, helping 
 If you have any questions or feedback, feel free to reach out!
 
 🔗 **LinkedIn**: [https://www.linkedin.com/in/kerin-m/] 
+
 📧 **Email**: kerinmulianto@gmail.com
 
